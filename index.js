@@ -1,10 +1,6 @@
 // Packages needed for this application
 const inquirer = require('inquirer'); // Package for prompting user input
 const fs = require('fs'); // File system module
-const { Console } = require('console');
-const circle = require('./lib/circle');
-const square = require('./lib/square');
-const triangle = require('./lib/triangle');
 const colors = [
     { name: "red",  value: "red"},
     { name: "blue", value: "blue"},
@@ -24,17 +20,8 @@ const questions = () => {
 ])}
 const svgContent = ({text, textColor, shape, shapeColor}) =>{
     const userShape = require("./lib/"+shape);
-    let logoElements;
-    switch(shape){
-        case "circle":  logoElements = new userShape(text, textColor, shapeColor);   break;
-        case "square":  logoElements = new userShape(text, textColor, shapeColor);   break;
-        case "triangle":logoElements = new userShape(text, textColor, shapeColor); break;
-        default:console.log("Something went wrong! Please try again.");
-    }
-    console.log(logoElements);
+    const logoElements = new userShape(text, textColor, shapeColor)
     const svgContent = logoElements.render();
-    console.log(svgContent);
-    
     writeToFile(svgContent);
 }
 function writeToFile(svgContent) {
