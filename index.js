@@ -3,7 +3,7 @@ const inquirer = require('inquirer'); // Package for prompting user input
 const fs = require('fs'); // File system module
 const colors = [
     { name: "red",  value: "red"},
-    { name: "blue", value: "blue"},
+    { name: "blueeee", value: "blueeee"},
     { name: "green",value: "green"},
 ];
 const shapes = [
@@ -14,9 +14,9 @@ const shapes = [
 const questions = () => {
     return inquirer.prompt([
         { type: "input", name: "text",      message: "Enter text for the logo (must not be more than 3 characters)."},
-        { type: "list",  name: "textColor", message: "Select the text's color for your logo", choices: colors,},
+        { type: "input", name: "textColor", message: "Select the text's color for your logo",},
         { type: "list",  name: "shape",     message: "Select the shape for your logo",        choices: shapes,},
-        { type: "list",  name: "shapeColor",message: "Select the shape's color for your logo",choices: colors,},
+        { type: "input", name: "shapeColor",message: "Select the shape's color for your logo",},
 ])}
 const svgContent = ({text, textColor, shape, shapeColor}) =>{
     const userShape = require("./lib/"+shape);
